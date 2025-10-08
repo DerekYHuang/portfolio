@@ -1,6 +1,33 @@
 body {
-  /* Set line height to 1.5 times the font size
-	   and use the OS’s UI font as the website font
-	 */
   font: 100%/1.5 system-ui;
+  
+  /* Step 1: Prevent content from getting too wide */
+  max-width: 100ch;
+
+  /* Step 2: Center content horizontally */
+  /* auto won't let us enforce a lower margin limit, so we use max() */
+  margin-inline: max(1em, (100% - 100ch) / 2);
+
+  /* Step 3: Add padding to prevent text from touching edges on small screens */
+  padding: 1em;
+}
+
+/* Optional: improve readability for text elements */
+p {
+  margin-block: 1em;
+}
+
+/* Optional: make nav links look cleaner and add spacing */
+nav {
+  margin-bottom: 1.5em;
+}
+
+nav a {
+  margin-right: 1em;
+  text-decoration: none;
+  color: #0073e6;
+}
+
+nav a:hover {
+  text-decoration: underline;
 }
