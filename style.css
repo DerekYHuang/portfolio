@@ -1,33 +1,81 @@
+/* ========== Global styles ========== */
+
+/* Accent color and default font setup */
+:root {
+  --color-accent: oklch(82.859% 0.09298 153.65); /* main accent (warm orange tone) */
+  --color-border: oklch(71.879% 0.11156 60.523); /* cool gray border */
+}
+
+html {
+  accent-color: var(--color-accent);
+}
+
 body {
   font: 100%/1.5 system-ui;
-  
+
   /* Step 1: Prevent content from getting too wide */
   max-width: 100ch;
 
-  /* Step 2: Center content horizontally */
-  /* auto won't let us enforce a lower margin limit, so we use max() */
+  /* Step 1: Center content horizontally */
   margin-inline: max(1em, (100% - 100ch) / 2);
 
-  /* Step 3: Add padding to prevent text from touching edges on small screens */
+  /* Step 1: Add padding for small screens */
   padding: 1em;
 }
 
-/* Optional: improve readability for text elements */
+/* ========== Navigation bar styling ========== */
+
+/* Step 2.1: Remove default <ul>/<li> behavior */
+nav ul,
+nav li {
+  display: contents;
+}
+
+/* Step 2.2–2.4: Flexbox navigation layout and styling */
+nav {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1.5em;
+}
+
+/* Make each link share space evenly */
+nav a {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.5em;
+  border-bottom: 0.4em solid transparent; /* reserve space for hover border */
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+  border-radius: 0.3em; /* slight rounding for hover background */
+}
+
+/* Highlight the current page */
+nav a.current {
+  border-bottom-color: var(--color-border);
+  padding-bottom: 0.3em; /* compensate for thicker border */
+  font-weight: 600;
+}
+
+/* 🌈 Hover and focus states with background tint */
+nav a:hover,
+nav a:focus {
+  border-bottom-color: var(--color-accent);
+
+  /* Light background with same hue as accent color */
+  background-color: oklch(from var(--color-accent) 95% 10% h);
+}
+
+/* ========== Text and image styling ========== */
+
 p {
   margin-block: 1em;
 }
 
-/* Optional: make nav links look cleaner and add spacing */
-nav {
-  margin-bottom: 1.5em;
-}
-
-nav a {
-  margin-right: 1em;
-  text-decoration: none;
-  color: #0073e6;
-}
-
-nav a:hover {
-  text-decoration: underline;
+img {
+  display: block;
+  margin-top: 1em;
+  border-radius: 0.5em;
 }
