@@ -178,3 +178,128 @@ h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+
+/* ========== CV/Resume Page Styling Only ========== */
+
+/* Scope all styles under body > header and sections to affect only this page */
+body > header {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+body > header h1 {
+  font-size: 3.5em;
+  margin-bottom: 0.2em;
+}
+
+body > header p {
+  margin: 0.2em 0;
+}
+
+body > header a {
+  text-decoration: none;
+}
+
+body > header a:hover {
+  text-decoration: underline;
+}
+
+/* Section styling */
+body > section {
+  margin-bottom: 2em;
+}
+
+/* Section headers */
+body > section h2 {
+  font-size: 2em;
+  border-bottom: 2px solid currentColor; /* only a subtle line, inherits current text color */
+  padding-bottom: 0.3em;
+  margin-bottom: 1em;
+}
+
+/* Articles inside sections */
+body > section article {
+  margin-bottom: 1.5em;
+  padding-left: 0.5em;
+}
+
+/* Article headers (job, education, project) */
+body > section article header h3 {
+  font-size: 1.4em;
+  margin: 0;
+}
+
+body > section article header p,
+body > section article header time {
+  margin: 0.2em 0;
+  font-size: 0.95em;
+}
+
+/* Lists inside articles */
+body > section article ul {
+  margin: 0.5em 0 0 1.5em;
+  padding: 0;
+  list-style-type: disc;
+}
+
+/* Skills section formatting */
+.skills-category h3 {
+  font-size: 1.2em;
+  margin-bottom: 0.2em;
+}
+
+.skills-category p {
+  margin: 0 0 0.8em 0;
+}
+
+/* Projects inside CV */
+.project header h3 {
+  font-size: 1.3em;
+  margin-bottom: 0.2em;
+}
+
+.project header p,
+.project header time {
+  font-size: 0.95em;
+  margin: 0.2em 0;
+}
+
+/* ===== Resume: header rows for left/right alignment ===== */
+body > section article header .header-row {
+  display: flex;
+  justify-content: space-between; /* left content left, right content right */
+  align-items: baseline;
+  flex-wrap: wrap; /* wraps on smaller screens */
+  margin-bottom: 0.2em; /* spacing between rows */
+}
+
+body > section article header .header-row .right {
+  text-align: right;
+  white-space: nowrap; /* keep location/date on single line */
+  font-weight: normal; /* optional */
+}
+
+
+/* Subtle spacing for job/project/education items */
+.job,
+.project,
+.education-item {
+  padding: 0.8em 0;
+  border-bottom: 1px solid currentColor; /* separates entries */
+}
+
+.job:last-child,
+.project:last-child,
+.education-item:last-child {
+  border-bottom: none; /* remove border for last item in section */
+}
+
+/* Links inside resume */
+body > section article a {
+  text-decoration: none;
+}
+
+body > section article a:hover {
+  text-decoration: underline;
+}
+
