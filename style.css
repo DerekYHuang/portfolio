@@ -2,8 +2,9 @@
 
 /* Accent color and default font setup */
 :root {
-  --color-accent: oklch(82.859% 0.09298 153.65); /* main accent (warm orange tone) */
-  --color-border: oklch(71.879% 0.11156 60.523); /* cool gray border */
+  --color-accent: oklch(71.879% 0.11156 60.523); /* main accent (warm orange tone) */
+  --color-border: oklch(60.388% 0.21386 31.009); /* cool gray border */
+  --color-button: oklch(82.859% 0.09298 153.65); /* send button on contact */
 }
 
 html {
@@ -79,3 +80,101 @@ img {
   margin-top: 1em;
   border-radius: 0.5em;
 }
+
+/* ========== Contact Form Styling ========== */
+
+form {
+  display: grid;
+  grid-template-columns: auto 1fr; /* label column auto, input fills remaining space */
+  gap: 1em; /* space between rows and columns */
+  max-width: 700px; /* optional max width */
+  margin-top: 2em;
+}
+
+/* Make labels grid containers for alignment */
+form label {
+  display: contents; /* label children (text + input/textarea) become direct grid items */
+  font-weight: 600; /* slightly bolder label text */
+}
+
+/* Inputs, textarea, and button styling */
+form input,
+form textarea,
+form button {
+  font: inherit; /* inherit font from body */
+  width: 100%;
+  box-sizing: border-box; /* padding and border included in width */
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 0.3em;
+}
+
+/* Submit button full row */
+form button {
+  grid-column: 1 / -1; /* span full row */
+  background-color: var(--color-button); /* use new color */
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+form button:hover {
+  background-color: oklch(from var(--color-button) 55% 50% h); /* slightly darker on hover */
+}
+
+
+/* ========== Projects Page Styling ========== */
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1.5em; /* spacing between projects */
+  margin-top: 2em;
+}
+
+/* Each article becomes a grid container for its content */
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid; /* align rows across articles */
+  grid-row: span 3; /* span 3 rows in main grid */
+  gap: 0.5em; /* spacing inside article */
+  border: 1px solid oklch(14.479% 0.00002 271.152); /* subtle border */
+  padding: 1em;
+  border-radius: 0.5em;
+  background-color: oklch(87.261% 0.05137 236.693); /* light background */
+}
+
+/* Headings inside projects */
+.projects h2 {
+  margin: 0; /* remove default margin */
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+/* Images in projects */
+.projects img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.3em;
+}
+
+/* Paragraph inside articles */
+.projects p {
+  margin: 0;
+}
+
+/* Improve heading hierarchy */
+h1 {
+  font-size: 4em; /* larger than h2 */
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+}
+
+h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
