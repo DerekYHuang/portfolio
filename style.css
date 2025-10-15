@@ -25,18 +25,17 @@ body {
 }
 
 /* ========== Navigation bar styling ========== */
-
-/* Step 2.1: Remove default <ul>/<li> behavior */
 nav ul,
 nav li {
   display: contents;
 }
 
-/* Step 2.2–2.4: Flexbox navigation layout and styling */
 nav {
   display: flex;
   border-bottom: 1px solid var(--color-border);
   margin-bottom: 1.5em;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 /* Make each link share space evenly */
@@ -49,28 +48,43 @@ nav a {
   border-bottom: 0.4em solid transparent; /* reserve space for hover border */
   transition:
     border-color 0.2s ease,
-    background-color 0.2s ease;
-  border-radius: 0.3em; /* slight rounding for hover background */
+    background-color 0.2s ease,
+    filter 0.2s ease;
+  border-radius: 0.3em;
 }
 
 /* Highlight the current page */
 nav a.current {
   border-bottom-color: var(--color-border);
-  padding-bottom: 0.3em; /* compensate for thicker border */
+  padding-bottom: 0.3em;
   font-weight: 600;
 }
 
-/* 🌈 Hover and focus states with background tint */
+/* Hover and focus states with background tint */
 nav a:hover,
 nav a:focus {
   border-bottom-color: var(--color-accent);
-
-  /* Light background with same hue as accent color */
-  background-color: oklch(from var(--color-accent) 95% 10% h);
+  filter: brightness(1.05);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 90%);
 }
 
-/* ========== Text and image styling ========== */
+/* Dark mode */
+html[data-theme="dark"] nav a:hover,
+html[data-theme="dark"] nav a:focus {
+  filter: brightness(1.1);
+  background-color: color-mix(in oklch, var(--color-accent), black 85%);
+}
 
+/* Automatic/system preference: match dark mode hover */
+html:not([data-theme]) nav a:hover,
+html:not([data-theme]) nav a:focus {
+  filter: brightness(1.1);
+  background-color: color-mix(in oklch, var(--color-accent), black 85%);
+}
+
+
+
+/* ========== Text and image styling ========== */
 p {
   margin-block: 1em;
 }
@@ -82,37 +96,33 @@ img {
 }
 
 /* ========== Contact Form Styling ========== */
-
 form {
   display: grid;
-  grid-template-columns: auto 1fr; /* label column auto, input fills remaining space */
-  gap: 1em; /* space between rows and columns */
-  max-width: 700px; /* optional max width */
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+  max-width: 700px;
   margin-top: 2em;
 }
 
-/* Make labels grid containers for alignment */
 form label {
-  display: contents; /* label children (text + input/textarea) become direct grid items */
-  font-weight: 600; /* slightly bolder label text */
+  display: contents;
+  font-weight: 600;
 }
 
-/* Inputs, textarea, and button styling */
 form input,
 form textarea,
 form button {
-  font: inherit; /* inherit font from body */
+  font: inherit;
   width: 100%;
-  box-sizing: border-box; /* padding and border included in width */
+  box-sizing: border-box;
   padding: 0.5em;
   border: 1px solid #ccc;
   border-radius: 0.3em;
 }
 
-/* Submit button full row */
 form button {
-  grid-column: 1 / -1; /* span full row */
-  background-color: var(--color-button); /* use new color */
+  grid-column: 1 / -1;
+  background-color: var(--color-button);
   color: white;
   font-weight: 600;
   cursor: pointer;
@@ -121,39 +131,79 @@ form button {
 }
 
 form button:hover {
-  background-color: oklch(from var(--color-button) 55% 50% h); /* slightly darker on hover */
+  background-color: oklch(from var(--color-button) 55% 50% h);
 }
 
-
 /* ========== Projects Page Styling ========== */
-
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-  gap: 1.5em; /* spacing between projects */
+  gap: 1.5em;
   margin-top: 2em;
 }
 
-/* Each article becomes a grid container for its content */
 .projects article {
   display: grid;
-  grid-template-rows: subgrid; /* align rows across articles */
-  grid-row: span 3; /* span 3 rows in main grid */
-  gap: 0.5em; /* spacing inside article */
-  border: 1px solid oklch(14.479% 0.00002 271.152); /* subtle border */
-  padding: 1em;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  gap: 0.5em;
+  border: 1px solid;
   border-radius: 0.5em;
-  background-color: oklch(87.261% 0.05137 236.693); /* light background */
+  padding: 1em;
 }
 
-/* Headings inside projects */
+/* ===== Projects article styling ===== */
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  gap: 0.5em;
+  border: 1px solid;
+  border-radius: 0.5em;
+  padding: 1em;
+}
+
+/* Light mode */
+html[data-theme="light"] .projects article {
+  border-color: #000;
+  background-color: oklch(87.261% 0.05137 236.693);
+}
+
+/* Dark mode */
+html[data-theme="dark"] .projects article {
+  border-color: #fff;
+  background-color: oklch(25% 0.02 240);
+}
+
+/* Automatic/system preference */
+html:not([data-theme]) .projects article {
+  border-color: #000;
+  background-color: oklch(87.261% 0.05137 236.693);
+}
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .projects article {
+    border-color: #fff;
+    background-color: oklch(25% 0.02 240);
+  }
+}
+
+
+/* Default (system preference) */
+html:not([data-theme]) .projects article {
+  border-color: #000;
+  background-color: oklch(87.261% 0.05137 236.693);
+  @media (prefers-color-scheme: dark) {
+    border-color: #fff;
+    background-color: oklch(25% 0.02 240);
+  }
+}
+
 .projects h2 {
-  margin: 0; /* remove default margin */
+  margin: 0;
   line-height: 1.1;
   text-wrap: balance;
 }
 
-/* Images in projects */
 .projects img {
   width: 100%;
   height: auto;
@@ -161,145 +211,114 @@ form button:hover {
   border-radius: 0.3em;
 }
 
-/* Paragraph inside articles */
 .projects p {
   margin: 0;
 }
 
 /* Improve heading hierarchy */
-h1 {
-  font-size: 4em; /* larger than h2 */
-  line-height: 1.1;
-  margin-bottom: 0.5em;
-}
+h1 { font-size: 4em; line-height: 1.1; margin-bottom: 0.5em; }
+h2, h3, h4, h5, h6 { line-height: 1.1; text-wrap: balance; }
 
-h2, h3, h4, h5, h6 {
-  line-height: 1.1;
-  text-wrap: balance;
-}
+/* ========== CV/Resume Styling ========== */
+body > header { text-align: center; margin-bottom: 2em; }
+body > header h1 { font-size: 3.5em; margin-bottom: 0.2em; }
+body > header p { margin: 0.2em 0; }
+body > header a { text-decoration: none; }
+body > header a:hover { text-decoration: underline; }
 
-
-/* ========== CV/Resume Page Styling Only ========== */
-
-/* Scope all styles under body > header and sections to affect only this page */
-body > header {
-  text-align: center;
-  margin-bottom: 2em;
-}
-
-body > header h1 {
-  font-size: 3.5em;
-  margin-bottom: 0.2em;
-}
-
-body > header p {
-  margin: 0.2em 0;
-}
-
-body > header a {
-  text-decoration: none;
-}
-
-body > header a:hover {
-  text-decoration: underline;
-}
-
-/* Section styling */
-body > section {
-  margin-bottom: 2em;
-}
-
-/* Section headers */
+body > section { margin-bottom: 2em; }
 body > section h2 {
   font-size: 2em;
-  border-bottom: 2px solid currentColor; /* only a subtle line, inherits current text color */
+  border-bottom: 2px solid currentColor;
   padding-bottom: 0.3em;
   margin-bottom: 1em;
 }
-
-/* Articles inside sections */
-body > section article {
-  margin-bottom: 1.5em;
-  padding-left: 0.5em;
-}
-
-/* Article headers (job, education, project) */
-body > section article header h3 {
-  font-size: 1.4em;
-  margin: 0;
-}
-
+body > section article { margin-bottom: 1.5em; padding-left: 0.5em; }
+body > section article header h3 { font-size: 1.4em; margin: 0; }
 body > section article header p,
-body > section article header time {
-  margin: 0.2em 0;
-  font-size: 0.95em;
-}
+body > section article header time { margin: 0.2em 0; font-size: 0.95em; }
+body > section article ul { margin: 0.5em 0 0 1.5em; padding: 0; list-style-type: disc; }
 
-/* Lists inside articles */
-body > section article ul {
-  margin: 0.5em 0 0 1.5em;
-  padding: 0;
-  list-style-type: disc;
-}
+.skills-category h3 { font-size: 1.2em; margin-bottom: 0.2em; }
+.skills-category p { margin: 0 0 0.8em 0; }
 
-/* Skills section formatting */
-.skills-category h3 {
-  font-size: 1.2em;
-  margin-bottom: 0.2em;
-}
-
-.skills-category p {
-  margin: 0 0 0.8em 0;
-}
-
-/* Projects inside CV */
-.project header h3 {
-  font-size: 1.3em;
-  margin-bottom: 0.2em;
-}
-
+.project header h3 { font-size: 1.3em; margin-bottom: 0.2em; }
 .project header p,
-.project header time {
-  font-size: 0.95em;
-  margin: 0.2em 0;
-}
+.project header time { font-size: 0.95em; margin: 0.2em 0; }
 
-/* ===== Resume: header rows for left/right alignment ===== */
 body > section article header .header-row {
   display: flex;
-  justify-content: space-between; /* left content left, right content right */
+  justify-content: space-between;
   align-items: baseline;
-  flex-wrap: wrap; /* wraps on smaller screens */
-  margin-bottom: 0.2em; /* spacing between rows */
+  flex-wrap: wrap;
+  margin-bottom: 0.2em;
 }
 
 body > section article header .header-row .right {
   text-align: right;
-  white-space: nowrap; /* keep location/date on single line */
-  font-weight: normal; /* optional */
+  white-space: nowrap;
+  font-weight: normal;
 }
 
-
-/* Subtle spacing for job/project/education items */
 .job,
 .project,
 .education-item {
   padding: 0.8em 0;
-  border-bottom: 1px solid currentColor; /* separates entries */
+  border-bottom: 1px solid currentColor;
 }
 
 .job:last-child,
 .project:last-child,
 .education-item:last-child {
-  border-bottom: none; /* remove border for last item in section */
+  border-bottom: none;
 }
 
-/* Links inside resume */
-body > section article a {
-  text-decoration: none;
+body > section article a { text-decoration: none; }
+body > section article a:hover { text-decoration: underline; }
+
+/* ===== Light/Dark Mode Defaults for Body ===== */
+html {
+  font-family: system-ui, sans-serif;
 }
 
-body > section article a:hover {
-  text-decoration: underline;
+html[data-theme="light"] {
+  background-color: #fafafa;
+  color: #111;
 }
 
+html[data-theme="dark"] {
+  background-color: #3f3d3d;
+  color: #e0dede;
+}
+
+html:not([data-theme]) {
+  /* System preference fallback */
+  @media (prefers-color-scheme: light) {
+    background-color: #fafafa;
+    color: #111;
+  }
+  @media (prefers-color-scheme: dark) {
+    background-color: #3f3d3d;
+    color: #e0dede;
+  }
+}
+
+/* ===== Theme Switcher Styling ===== */
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+  color: canvastext;
+}
+
+.color-scheme select {
+  font-family: inherit;
+  font-size: inherit;
+  background: canvas;
+  color: canvastext;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.25rem;
+}
