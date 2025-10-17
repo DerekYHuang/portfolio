@@ -24,6 +24,7 @@ body {
   padding: 1em;
 }
 
+
 /* ========== Navigation bar styling ========== */
 nav ul,
 nav li {
@@ -322,3 +323,49 @@ html:not([data-theme]) {
   border-radius: 4px;
   padding: 0.25rem;
 }
+
+/* ========== Index Page Centered Layout (with full-width nav) ========== */
+body.index {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Keep navigation bar full width */
+body.index nav {
+  align-self: stretch;
+}
+
+/* Centered content below nav */
+body.index h1,
+body.index p,
+body.index img {
+  margin-inline: auto;
+}
+
+/* Name styling */
+body.index h1 {
+  margin-top: 2.5em;
+  font-size: 3em;
+  font-weight: 800;
+}
+
+/* Paragraph styling */
+body.index p {
+  max-width: 60ch;
+  margin-top: 1.2em;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+/* Make image circular and centered */
+body.index img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 1.5em;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
