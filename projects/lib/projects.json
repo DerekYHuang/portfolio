@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Social-Media-Student-Mental-Health",
+    "year": "2025",
+    "image": "../images/social_health.png",
+    "description": "Built multiple linear regression models using Ordinary Least Squares (OLS) to assess the impact of social media usage and other predictors on loneliness, anxiety, and depression among college students."
+  },
+  {
+    "title": "San-Diego-MTS",
+    "year": "2024",
+    "image": "../images/mts_transit.png",
+    "description": "Analyzed real-world transit data using Python (Pandas, Matplotlib) to identify inefficiencies in San Diego's bus network."
+  },
+  {
+    "title": "Job Layoff Analysis",
+    "year": "2024",
+    "image": "../images/job_layoff.png",
+    "description": "This project analyzes recent workforce layoffs across companies and industries, identifying key trends and patterns in employment reductions."
+  },
+  {
+    "title": "Portfolio Website",
+    "year": "2024",
+    "image": "images/portfolio_site.png",
+    "description": "Developed a responsive personal portfolio with templated projects and dark/light mode support."
+  },
+  {
+    "title": "Web Scraper for Hootsuite",
+    "year": "2025",
+    "image": "images/hootsuite_scraper.png",
+    "description": "Designed a Python-based Selenium scraper for collecting scheduled social media posts for data analysis."
+  },
+  {
+    "title": "Data Merging Automation Script",
+    "year": "2025",
+    "image": "images/data_merge.png",
+    "description": "Automated the process of merging land temperature datasets with truth data using Pandas and coordinate normalization."
+  },
+  {
+    "title": "Climate Change Visualization Dashboard",
+    "year": "2023",
+    "image": "images/climate_dashboard.png",
+    "description": "Built a visualization dashboard to explore global temperature trends and anomalies using Plotly and D3.js."
+  },
+  {
+    "title": "Movie Recommendation System",
+    "year": "2022",
+    "image": "images/movie_recommender.png",
+    "description": "Created a collaborative filtering recommendation system using cosine similarity and user rating data."
+  },
+  {
+    "title": "Abortion Clinic Availability Map",
+    "year": "2025",
+    "image": "images/clinic_map.png",
+    "description": "Visualized U.S. clinic accessibility using choropleth maps to highlight reproductive health disparities."
+  },
+  {
+    "title": "Bayesian Network Reasoning Tool",
+    "year": "2024",
+    "image": "images/bn_tool.png",
+    "description": "Implemented probabilistic inference algorithms including variable elimination and sampling in a Bayesian network."
+  },
+  {
+    "title": "ER Diagram to SQL Translator",
+    "year": "2024",
+    "image": "images/sql_diagram.png",
+    "description": "Converted entity-relationship diagrams into normalized SQL schemas using Python-based rule translation."
+  },
+  {
+    "title": "Study Guide Generator",
+    "year": "2023",
+    "image": "images/study_guide.png",
+    "description": "Developed an automated study guide generator for course concepts using Markdown and Python templating."
+  }
+]

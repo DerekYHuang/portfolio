@@ -103,3 +103,61 @@ select.addEventListener("input", (event) => {
   setColorScheme(event.target.value);
 });
 
+
+// ===== Lab4 - Step 1.2: Fetch JSON Helper =====
+export async function fetchJSON(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch JSON: ${response.statusText}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching or parsing JSON data:", error);
+  }
+}
+
+// ===== Step 1.4: Render Projects =====
+export function renderProjects(projects, containerElement, headingLevel = "h2") {
+  if (!Array.isArray(projects)) {
+    console.error("Invalid project data.");
+    return;
+  }
+
+  if (!containerElement) {
+    console.error("Container element not found.");
+    return;
+  }
+
+  // Clear any existing HTML
+  containerElement.innerHTML = "";
+
+  // If there are no projects, show a placeholder
+  if (projects.length === 0) {
+    containerElement.innerHTML = "<p>No projects found.</p>";
+    return;
+  }
+
+  // Create a new <article> for each project
+  for (const project of projects) {
+    const article = document.createElement("article");
+    article.innerHTML = `
+      <${headingLevel}>${project.title}</${headingLevel}>
+      <img src="${project.image}" alt="${project.title}">
+      <p>${project.description}</p>
+    `;
+    containerElement.appendChild(article);
+  }
+}
+
+// ===== Lab4 - Step 3: Fetch GitHub Data =====
+export async function fetchGitHubData(username) {
+  try {
+    return await fetchJSON(`https://api.github.com/users/${username}`);
+  } catch (error) {
+    console.error("Error fetching GitHub data:", error);
+  }
+}
+
+

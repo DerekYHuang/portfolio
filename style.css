@@ -369,3 +369,91 @@ body.index img {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
+/* ===== GitHub Stats Section ===== */
+.github-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding: 1rem 0;
+}
+
+.github-stats div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== Label (dt) Styling ===== */
+.github-stats dt {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+/* ===== Number (dd) Styling ===== */
+.github-stats dd {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+/* ===== Title Styling ===== */
+#profile-stats h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+/* ===== Light Mode (manual + system) ===== */
+html[data-theme="light"] .github-stats dt,
+html:not([data-theme]) .github-stats dt {
+  color: #6b7280; /* subtle gray label */
+}
+html[data-theme="light"] .github-stats dd,
+html:not([data-theme]) .github-stats dd {
+  color: #111827; /* dark numbers */
+}
+html[data-theme="light"] #profile-stats h2,
+html:not([data-theme]) #profile-stats h2 {
+  color: #111;
+}
+
+/* ===== Dark Mode (manual) ===== */
+html[data-theme="dark"] .github-stats dt {
+  color: #9ca3af; /* soft gray label */
+}
+html[data-theme="dark"] .github-stats dd {
+  color: #f3f4f6; /* light numbers */
+}
+html[data-theme="dark"] #profile-stats h2 {
+  color: #e5e7eb; /* light heading */
+}
+
+/* ===== Dark Mode (system preference when no data-theme set) ===== */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .github-stats dt {
+    color: #9ca3af;
+  }
+  html:not([data-theme]) .github-stats dd {
+    color: #f3f4f6;
+  }
+  html:not([data-theme]) #profile-stats h2 {
+    color: #e5e7eb;
+  }
+}
+
+/* ===== Responsive Layout ===== */
+@media (max-width: 600px) {
+  .github-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
