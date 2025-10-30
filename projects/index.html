@@ -8,24 +8,37 @@
 </head>
 <body>
   <h1 class="projects-title">My Projects</h1>
+
   <div id="profile-stats">
-  <!-- GitHub stats will load here -->
+    <!-- GitHub stats will load here -->
   </div>
 
-  <p>Here are some of the projects I've worked on...</p>
+  <div class="pie-legend-container">
+  <svg id="projects-pie-plot" viewBox="-50 -50 100 100"></svg>
+  <ul class="legend"></ul>
+  </div>
+
+  <!-- Search bar above the Latest Projects -->
+  <input
+  class="searchBar"
+  type="search"
+  aria-label="Search projects"
+  placeholder="🔍 Search projects…"
+  />
 
   <h2>Latest Projects</h2>
-  <div class="projects">
-  <!-- Dynamically added content will appear here -->
+  <div class="projects latest-projects">
+  <!-- Dynamically added latest 3 projects will appear here -->
   </div>
 
-
-  <section class="projects">
-    <!-- Dynamically generated projects will appear here -->
+  <section class="projects all-projects">
+  <!-- All projects will appear here if needed -->
   </section>
+
 
   <!-- Load scripts -->
   <script src="../global.js" type="module" defer></script>
   <script src="/index.js" type="module" defer></script>
+  <script src="projects.js" type="module" defer></script>
 </body>
 </html>

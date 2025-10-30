@@ -2,9 +2,9 @@
 
 /* Accent color and default font setup */
 :root {
-  --color-accent: oklch(71.879% 0.11156 60.523); /* main accent (warm orange tone) */
-  --color-border: oklch(60.388% 0.21386 31.009); /* cool gray border */
-  --color-button: oklch(82.859% 0.09298 153.65); /* send button on contact */
+  --color-accent: oklch(71.879% 0.11156 60.523);
+  --color-border: oklch(60.388% 0.21386 31.009);
+  --color-button: oklch(82.859% 0.09298 153.65);
 }
 
 html {
@@ -13,17 +13,10 @@ html {
 
 body {
   font: 100%/1.5 system-ui;
-
-  /* Step 1: Prevent content from getting too wide */
   max-width: 100ch;
-
-  /* Step 1: Center content horizontally */
   margin-inline: max(1em, (100% - 100ch) / 2);
-
-  /* Step 1: Add padding for small screens */
   padding: 1em;
 }
-
 
 /* ========== Navigation bar styling ========== */
 nav ul,
@@ -39,29 +32,23 @@ nav {
   padding: 0.5rem 1rem;
 }
 
-/* Make each link share space evenly */
 nav a {
   flex: 1;
   text-align: center;
   text-decoration: none;
   color: inherit;
   padding: 0.5em;
-  border-bottom: 0.4em solid transparent; /* reserve space for hover border */
-  transition:
-    border-color 0.2s ease,
-    background-color 0.2s ease,
-    filter 0.2s ease;
+  border-bottom: 0.4em solid transparent;
+  transition: border-color 0.2s ease, background-color 0.2s ease, filter 0.2s ease;
   border-radius: 0.3em;
 }
 
-/* Highlight the current page */
 nav a.current {
   border-bottom-color: var(--color-border);
   padding-bottom: 0.3em;
   font-weight: 600;
 }
 
-/* Hover and focus states with background tint */
 nav a:hover,
 nav a:focus {
   border-bottom-color: var(--color-accent);
@@ -69,21 +56,17 @@ nav a:focus {
   background-color: color-mix(in oklch, var(--color-accent), canvas 90%);
 }
 
-/* Dark mode */
 html[data-theme="dark"] nav a:hover,
 html[data-theme="dark"] nav a:focus {
   filter: brightness(1.1);
   background-color: color-mix(in oklch, var(--color-accent), black 85%);
 }
 
-/* Automatic/system preference: match dark mode hover */
 html:not([data-theme]) nav a:hover,
 html:not([data-theme]) nav a:focus {
   filter: brightness(1.1);
   background-color: color-mix(in oklch, var(--color-accent), black 85%);
 }
-
-
 
 /* ========== Text and image styling ========== */
 p {
@@ -153,17 +136,6 @@ form button:hover {
   padding: 1em;
 }
 
-/* ===== Projects article styling ===== */
-.projects article {
-  display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 3;
-  gap: 0.5em;
-  border: 1px solid;
-  border-radius: 0.5em;
-  padding: 1em;
-}
-
 /* Light mode */
 html[data-theme="light"] .projects article {
   border-color: #000;
@@ -181,19 +153,9 @@ html:not([data-theme]) .projects article {
   border-color: #000;
   background-color: oklch(87.261% 0.05137 236.693);
 }
+
 @media (prefers-color-scheme: dark) {
   html:not([data-theme]) .projects article {
-    border-color: #fff;
-    background-color: oklch(25% 0.02 240);
-  }
-}
-
-
-/* Default (system preference) */
-html:not([data-theme]) .projects article {
-  border-color: #000;
-  background-color: oklch(87.261% 0.05137 236.693);
-  @media (prefers-color-scheme: dark) {
     border-color: #fff;
     background-color: oklch(25% 0.02 240);
   }
@@ -293,7 +255,6 @@ html[data-theme="dark"] {
 }
 
 html:not([data-theme]) {
-  /* System preference fallback */
   @media (prefers-color-scheme: light) {
     background-color: #fafafa;
     color: #111;
@@ -324,7 +285,7 @@ html:not([data-theme]) {
   padding: 0.25rem;
 }
 
-/* ========== Index Page Centered Layout (with full-width nav) ========== */
+/* ========== Index Page Centered Layout ========== */
 body.index {
   display: flex;
   flex-direction: column;
@@ -332,26 +293,22 @@ body.index {
   text-align: center;
 }
 
-/* Keep navigation bar full width */
 body.index nav {
   align-self: stretch;
 }
 
-/* Centered content below nav */
 body.index h1,
 body.index p,
 body.index img {
   margin-inline: auto;
 }
 
-/* Name styling */
 body.index h1 {
   margin-top: 2.5em;
   font-size: 3em;
   font-weight: 800;
 }
 
-/* Paragraph styling */
 body.index p {
   max-width: 60ch;
   margin-top: 1.2em;
@@ -359,7 +316,6 @@ body.index p {
   line-height: 1.6;
 }
 
-/* Make image circular and centered */
 body.index img {
   width: 300px;
   height: 300px;
@@ -385,7 +341,6 @@ body.index img {
   align-items: center;
 }
 
-/* ===== Label (dt) Styling ===== */
 .github-stats dt {
   font-size: 0.9rem;
   font-weight: 600;
@@ -395,7 +350,6 @@ body.index img {
   transition: color 0.3s ease;
 }
 
-/* ===== Number (dd) Styling ===== */
 .github-stats dd {
   font-size: 1.8rem;
   font-weight: 700;
@@ -403,7 +357,6 @@ body.index img {
   transition: color 0.3s ease;
 }
 
-/* ===== Title Styling ===== */
 #profile-stats h2 {
   font-size: 1.4rem;
   font-weight: 700;
@@ -411,32 +364,29 @@ body.index img {
   transition: color 0.3s ease;
 }
 
-/* ===== Light Mode (manual + system) ===== */
 html[data-theme="light"] .github-stats dt,
 html:not([data-theme]) .github-stats dt {
-  color: #6b7280; /* subtle gray label */
+  color: #6b7280;
 }
 html[data-theme="light"] .github-stats dd,
 html:not([data-theme]) .github-stats dd {
-  color: #111827; /* dark numbers */
+  color: #111827;
 }
 html[data-theme="light"] #profile-stats h2,
 html:not([data-theme]) #profile-stats h2 {
   color: #111;
 }
 
-/* ===== Dark Mode (manual) ===== */
 html[data-theme="dark"] .github-stats dt {
-  color: #9ca3af; /* soft gray label */
+  color: #9ca3af;
 }
 html[data-theme="dark"] .github-stats dd {
-  color: #f3f4f6; /* light numbers */
+  color: #f3f4f6;
 }
 html[data-theme="dark"] #profile-stats h2 {
-  color: #e5e7eb; /* light heading */
+  color: #e5e7eb;
 }
 
-/* ===== Dark Mode (system preference when no data-theme set) ===== */
 @media (prefers-color-scheme: dark) {
   html:not([data-theme]) .github-stats dt {
     color: #9ca3af;
@@ -449,7 +399,6 @@ html[data-theme="dark"] #profile-stats h2 {
   }
 }
 
-/* ===== Responsive Layout ===== */
 @media (max-width: 600px) {
   .github-stats {
     grid-template-columns: repeat(2, 1fr);
@@ -457,3 +406,159 @@ html[data-theme="dark"] #profile-stats h2 {
   }
 }
 
+/* ========== Project Cards ========== */
+.project-card {
+  border: 1px solid;
+  border-radius: 0.5em;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+html[data-theme="light"] .project-card {
+  border-color: #000;
+  background-color: oklch(87.261% 0.05137 236.693);
+}
+
+html[data-theme="dark"] .project-card {
+  border-color: #fff;
+  background-color: oklch(25% 0.02 240);
+}
+
+html:not([data-theme]) .project-card {
+  border-color: #000;
+  background-color: oklch(87.261% 0.05137 236.693);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .project-card {
+    border-color: #fff;
+    background-color: oklch(25% 0.02 240);
+  }
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.project-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 0.4em;
+}
+
+.project-text {
+  margin-top: 0.5rem;
+}
+
+.project-year {
+  color: gray;
+  font-family: Baskerville, serif;
+  font-size: 0.9em;
+  font-variant-numeric: oldstyle-nums;
+  margin-top: 0.25em;
+}
+
+/* ========== PIE CHART & LEGEND CONTAINER ========== */
+.pie-legend-container {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+  margin-block: 2em;
+}
+
+/* ========== PIE CHART SVG ========== */
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
+}
+
+/* Step 5.1: Pie chart paths with hover effects and smooth transitions */
+#projects-pie-plot path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
+/* Step 5.1: Hover effect - fade out non-hovered wedges */
+#projects-pie-plot:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+/* Step 5.2: Selected wedge styling with distinct purple color */
+.selected {
+  --color: rgb(138, 43, 226) !important;
+}
+
+.selected:is(path) {
+  fill: var(--color);
+}
+
+/* ========== LEGEND ========== */
+.legend {
+  list-style: none;
+  padding: 1em;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 0.8em;
+  flex: 1;
+  border: 2px solid #ccc;
+  border-radius: 0.5em;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  cursor: pointer;
+  padding: 0.3em;
+  border-radius: 0.3em;
+  transition: background-color 0.2s ease;
+}
+
+.legend li:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Swatch color box */
+.legend .swatch {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: var(--color);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* Step 5.2: Selected legend item styling with purple */
+.legend li.selected {
+  font-weight: bold;
+  background-color: rgba(138, 43, 226, 0.15);
+}
+
+.legend li.selected .swatch {
+  background-color: var(--color);
+}
+
+/* ========== SEARCH BAR ========== */
+.searchBar {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.7em 1em;
+  font-size: 1.1em;
+  margin-bottom: 1.5em;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.searchBar:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}

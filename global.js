@@ -119,37 +119,52 @@ export async function fetchJSON(url) {
 }
 
 // ===== Step 1.4: Render Projects =====
-export function renderProjects(projects, containerElement, headingLevel = "h2") {
-  if (!Array.isArray(projects)) {
-    console.error("Invalid project data.");
-    return;
-  }
+// global.js
 
-  if (!containerElement) {
-    console.error("Container element not found.");
-    return;
-  }
+export function renderProject(project) {
+  const projectCard = document.createElement("div");
+  projectCard.classList.add("project-card");
 
-  // Clear any existing HTML
-  containerElement.innerHTML = "";
+  // Project image
+  const img = document.createElement("img");
+  img.src = project.image;
+  img.alt = project.title;
 
-  // If there are no projects, show a placeholder
-  if (projects.length === 0) {
-    containerElement.innerHTML = "<p>No projects found.</p>";
-    return;
-  }
+  // Title
+  const title = document.createElement("h3");
+  title.textContent = project.title.replace(/-/g, " ");
 
-  // Create a new <article> for each project
-  for (const project of projects) {
-    const article = document.createElement("article");
-    article.innerHTML = `
-      <${headingLevel}>${project.title}</${headingLevel}>
-      <img src="${project.image}" alt="${project.title}">
-      <p>${project.description}</p>
-    `;
-    containerElement.appendChild(article);
-  }
+  // Description
+  const description = document.createElement("p");
+  description.textContent = project.description;
+
+  // Year (added here)
+  const year = document.createElement("p");
+  year.textContent = project.year;
+  year.classList.add("project-year");
+
+  // Wrap description + year in same container
+  const textContainer = document.createElement("div");
+  textContainer.classList.add("project-text");
+  textContainer.appendChild(description);
+  textContainer.appendChild(year);
+
+  // Combine everything into the card
+  projectCard.appendChild(img);
+  projectCard.appendChild(title);
+  projectCard.appendChild(textContainer);
+
+  return projectCard;
 }
+
+// Example renderProjects if you have it:
+export function renderProjects(projects, container) {
+  container.innerHTML = "";
+  projects.forEach((project) => {
+    container.appendChild(renderProject(project));
+  });
+}
+
 
 // ===== Lab4 - Step 3: Fetch GitHub Data =====
 export async function fetchGitHubData(username) {
