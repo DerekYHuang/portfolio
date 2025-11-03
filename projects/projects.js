@@ -38,7 +38,7 @@ async function initProjects() {
     svg.selectAll("path").remove();
     legend.selectAll("*").remove();
 
-    // Use only the visible 3 projects for the pie chart
+    // Use only the visible projects for the pie chart
     const rolledData = d3.rollups(
       visibleProjects,
       v => v.length,
@@ -122,7 +122,7 @@ async function initProjects() {
 
   // --- UPDATE UI FUNCTION ---
   function updateUI() {
-    // Get the 3 visible projects
+    // Get the visible projects
     const visibleProjects = getVisibleProjects();
 
     // Decide what to display
