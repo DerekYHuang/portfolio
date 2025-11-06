@@ -21,6 +21,7 @@ const pages = [
   { url: "contact/", title: "Contact" },
   { url: "https://github.com/DerekYHuang", title: "Profile" },
   { url: "cv/", title: "CV/Resume" },
+  { url: "meta/", title: "Meta" },
 ];
 
 // Create <nav> and add to top of <body>
