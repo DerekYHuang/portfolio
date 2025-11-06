@@ -562,3 +562,345 @@ html:not([data-theme]) .project-card {
   outline: none;
   border-color: var(--color-accent);
 }
+
+
+/* ========== META PAGE STYLING ========== */
+/* Stats display */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Light mode stats background */
+html[data-theme="light"] .stats {
+  background-color: #ffffff;
+  color: #111;
+}
+
+/* Dark mode stats background */
+html[data-theme="dark"] .stats {
+  background-color: #2a2a2a;
+  color: #e0dede;
+}
+
+/* System preference */
+html:not([data-theme]) .stats {
+  background-color: #f5f5f5;
+  color: #111;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .stats {
+    background-color: #2a2a2a;
+    color: #e0dede;
+  }
+}
+
+.stats dt {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  opacity: 0.7;
+}
+
+.stats dd {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 600px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+
+/* ========== SCATTERPLOT STYLING IN META(TAB) ========== */
+#chart {
+  margin: 2rem 0;
+}
+
+#chart svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Gridlines styling */
+.gridlines line {
+  stroke: #e0e0e0;
+  stroke-opacity: 0.5;
+  stroke-width: 1;
+}
+
+.gridlines path {
+  stroke: none;
+}
+
+/* Dark mode gridlines */
+html[data-theme="dark"] .gridlines line {
+  stroke: #555;
+  stroke-opacity: 0.3;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .gridlines line {
+    stroke: #555;
+    stroke-opacity: 0.3;
+  }
+}
+
+/* Axis styling */
+#chart svg .domain {
+  stroke: currentColor;
+}
+
+#chart svg .tick line {
+  stroke: currentColor;
+}
+
+#chart svg .tick text {
+  fill: currentColor;
+}
+
+/* Dots styling*/
+.dots circle {
+  transition: fill-opacity 200ms, transform 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+  cursor: pointer;
+}
+
+.dots circle:hover {
+  transform: scale(1.2);
+  stroke-width: 2;
+}
+
+html[data-theme="dark"] .dots circle:hover {
+  stroke: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .dots circle:hover {
+    stroke: #fff;
+  }
+}
+
+
+/* ========== TOOLTIP STYLING ========== */
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+  margin: 0;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+  pointer-events: none; /* Allow mouse to pass through */
+}
+
+dl.info dt {
+  font-weight: 600;
+  opacity: 0.7;
+  font-size: 0.9em;
+}
+
+dl.info dd {
+  margin: 0;
+  font-size: 0.95em;
+}
+
+dl.info dd a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-family: monospace;
+}
+
+dl.info dd a:hover {
+  text-decoration: underline;
+}
+
+/* Tooltip positioning */
+.tooltip {
+  position: fixed;
+  z-index: 1000;
+  max-width: 300px;
+  transition: left 100ms ease, top 100ms ease; /* Add smooth movement */
+}
+
+/* Hidden state */
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Dark mode tooltip */
+html[data-theme="dark"] dl.info {
+  background-color: rgba(50, 50, 50, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) dl.info {
+    background-color: rgba(50, 50, 50, 0.95);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Circle hover effects */
+circle {
+  transition: fill-opacity 200ms, transform 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+  cursor: pointer;
+}
+
+circle:hover {
+  transform: scale(1.2); /* Slightly smaller scale since dots are already bigger */
+  stroke-width: 2;
+}
+
+
+/* ========== BRUSHING STYLING ========== */
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+
+.selection {
+  fill: var(--color-accent);
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+}
+
+/* Dark mode brush selection */
+html[data-theme="dark"] .selection {
+  stroke: white;
+  fill: var(--color-accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .selection {
+    stroke: white;
+    fill: var(--color-accent);
+  }
+}
+
+/* Selected circles */
+circle.selected {
+  fill: #ff6b6b !important;
+  stroke: #d63031 !important;
+  stroke-width: 2;
+}
+
+/* Selection count styling */
+#selection-count {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 1.5rem 0;
+  padding: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  text-align: center;
+}
+
+html[data-theme="dark"] #selection-count {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) #selection-count {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Language breakdown heading */
+#language-breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Light mode language breakdown background */
+html[data-theme="light"] #language-breakdown {
+  background-color: #f5f5f5;
+  color: #111;
+}
+
+/* Dark mode language breakdown background */
+html[data-theme="dark"] #language-breakdown {
+  background-color: #2a2a2a;
+  color: #e0dede;
+}
+
+/* System preference */
+html:not([data-theme]) #language-breakdown {
+  background-color: #f5f5f5;
+  color: #111;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) #language-breakdown {
+    background-color: #2a2a2a;
+    color: #e0dede;
+  }
+}
+
+#language-breakdown dt {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  opacity: 0.7;
+}
+
+#language-breakdown dd {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+#language-breakdown dd .percentage {
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.8;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* When empty */
+#language-breakdown:empty {
+  display: none;
+}
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 600px) {
+  #language-breakdown {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
