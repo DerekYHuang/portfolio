@@ -18,10 +18,10 @@
     "description": "This project analyzes recent workforce layoffs across companies and industries, identifying key trends and patterns in employment reductions."
   },
   {
-    "title": "Portfolio Website",
-    "year": "2024",
-    "image": "images/portfolio_site.png",
-    "description": "Developed a responsive personal portfolio with templated projects and dark/light mode support."
+    "title": "Modeling-Comebacks-in-LoL",
+    "year": "2025",
+    "image": "../images/lol_image.png",
+    "description": "Predicting comebacks in League of Legends esports using machine learning. When teams are losing at 20 minutes, what factors determine if they can still win? This analysis reveals the hidden patterns behind unlikely victories."
   },
   {
     "title": "Web Scraper for Hootsuite",

@@ -24,9 +24,9 @@ async function initProjects() {
     return filteredProjects;
   }
 
+  // Get filtered projects and take only first 4
   function getVisibleProjects() {
-    // Get filtered projects and take only first 3
-    return getFilteredProjects().slice(0, 3);
+    return getFilteredProjects().slice(0, 4);
   }
 
   // --- PIE CHART FUNCTION ---
