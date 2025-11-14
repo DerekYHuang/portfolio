@@ -1,5 +1,5 @@
 // global.js
-console.log("IT’S ALIVE!");
+console.log("IT'S ALIVE!");
 
 // ===== Helper =====
 function $$(selector, context = document) {
@@ -119,12 +119,22 @@ export async function fetchJSON(url) {
   }
 }
 
-// ===== Step 1.4: Render Projects =====
-// global.js
-
+// ===== Step 1.4: Render Projects (Updated to support URLs and tags) =====
 export function renderProject(project) {
   const projectCard = document.createElement("div");
   projectCard.classList.add("project-card");
+
+  // Create wrapper (link if URL exists, otherwise div)
+  let wrapper;
+  if (project.url) {
+    wrapper = document.createElement("a");
+    wrapper.href = project.url;
+    wrapper.target = "_blank";
+    wrapper.rel = "noopener noreferrer";
+    wrapper.classList.add("project-link");
+  } else {
+    wrapper = document.createElement("div");
+  }
 
   // Project image
   const img = document.createElement("img");
@@ -139,30 +149,64 @@ export function renderProject(project) {
   const description = document.createElement("p");
   description.textContent = project.description;
 
-  // Year (added here)
-  const year = document.createElement("p");
-  year.textContent = project.year;
-  year.classList.add("project-year");
+  // Tags (if they exist)
+  let tagsContainer;
+  if (project.tags && project.tags.length > 0) {
+    tagsContainer = document.createElement("div");
+    tagsContainer.classList.add("tags");
+    
+    project.tags.forEach(tag => {
+      const tagSpan = document.createElement("span");
+      tagSpan.classList.add("tag");
+      tagSpan.textContent = tag;
+      tagsContainer.appendChild(tagSpan);
+    });
+  }
 
-  // Wrap description + year in same container
-  const textContainer = document.createElement("div");
-  textContainer.classList.add("project-text");
-  textContainer.appendChild(description);
-  textContainer.appendChild(year);
+  // Year (if it exists)
+  let year;
+  if (project.year) {
+    year = document.createElement("p");
+    year.textContent = `Year: ${project.year}`;
+    year.classList.add("project-year");
+  }
 
-  // Combine everything into the card
-  projectCard.appendChild(img);
-  projectCard.appendChild(title);
-  projectCard.appendChild(textContainer);
+  // Assemble the card
+  wrapper.appendChild(img);
+  wrapper.appendChild(title);
+  wrapper.appendChild(description);
+  
+  if (tagsContainer) {
+    wrapper.appendChild(tagsContainer);
+  }
+  
+  if (year) {
+    wrapper.appendChild(year);
+  }
+
+  projectCard.appendChild(wrapper);
 
   return projectCard;
 }
 
-// Example renderProjects if you have it:
-export function renderProjects(projects, container) {
+// Render multiple projects with optional title level
+export function renderProjects(projects, container, titleLevel = "h3") {
   container.innerHTML = "";
   projects.forEach((project) => {
-    container.appendChild(renderProject(project));
+    const projectCard = renderProject(project);
+    
+    // If titleLevel is specified and different from default h3, update it
+    if (titleLevel !== "h3") {
+      const h3 = projectCard.querySelector("h3");
+      if (h3) {
+        const newTitle = document.createElement(titleLevel);
+        newTitle.textContent = h3.textContent;
+        newTitle.className = h3.className;
+        h3.replaceWith(newTitle);
+      }
+    }
+    
+    container.appendChild(projectCard);
   });
 }
 
@@ -175,5 +219,3 @@ export async function fetchGitHubData(username) {
     console.error("Error fetching GitHub data:", error);
   }
 }
-
-

@@ -3,31 +3,37 @@
     "title": "Social-Media-Student-Mental-Health",
     "year": "2025",
     "image": "../images/social_health.png",
-    "description": "Built multiple linear regression models using Ordinary Least Squares (OLS) to assess the impact of social media usage and other predictors on loneliness, anxiety, and depression among college students."
+    "description": "Built multiple linear regression models using Ordinary Least Squares (OLS) to assess the impact of social media usage and other predictors on loneliness, anxiety, and depression among college students.",
+    "tags": ["Python", "Pandas", "NumPy", "scikit-learn", "Matplotlib"]
   },
   {
     "title": "San-Diego-MTS",
     "year": "2024",
     "image": "../images/mts_transit.png",
-    "description": "Analyzed real-world transit data using Python (Pandas, Matplotlib) to identify inefficiencies in San Diego's bus network."
+    "description": "Analyzed real-world transit data using Python (Pandas, Matplotlib) to identify inefficiencies in San Diego's bus network.",
+    "tags": ["Python", "Pandas", "Matplotlib", "NumPy"]
   },
   {
     "title": "Job Layoff Analysis",
     "year": "2024",
     "image": "../images/job_layoff.png",
-    "description": "This project analyzes recent workforce layoffs across companies and industries, identifying key trends and patterns in employment reductions."
+    "description": "This project analyzes recent workforce layoffs across companies and industries, identifying key trends and patterns in employment reductions.",
+    "tags": ["Python", "Pandas", "Matplotlib", "Seaborn"]
   },
   {
     "title": "Modeling-Comebacks-in-LoL",
     "year": "2025",
     "image": "../images/lol_image.png",
-    "description": "Predicting comebacks in League of Legends esports using machine learning. When teams are losing at 20 minutes, what factors determine if they can still win? This analysis reveals the hidden patterns behind unlikely victories."
+    "description": "Predicting comebacks in League of Legends esports using machine learning. When teams are losing at 20 minutes, what factors determine if they can still win? This analysis reveals the hidden patterns behind unlikely victories.",
+    "tags": ["HTML", "Python", "scikit-learn", "Pandas", "Matplotlib", "Machine Learning", "Predicition Modeling"]
   },
   {
-    "title": "Web Scraper for Hootsuite",
-    "year": "2025",
-    "image": "images/hootsuite_scraper.png",
-    "description": "Designed a Python-based Selenium scraper for collecting scheduled social media posts for data analysis."
+  "title": "Bikewatching",
+  "year": "2025",
+  "description": "An immersive, interactive map visualization of bike traffic in the Boston area during different times of the day. Features over 260,000 trip records with time-based filtering and traffic flow visualization.",
+  "image": "../images/bikewatching.png",
+  "url": "https://derekyhuang.github.io/Bike_Watching_Project/",
+  "tags": ["JavaScript", "D3.js", "Mapbox", "HTML", "CSS"]
   },
   {
     "title": "Data Merging Automation Script",

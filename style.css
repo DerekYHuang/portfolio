@@ -904,3 +904,71 @@ html:not([data-theme]) #language-breakdown {
     gap: 1.5rem;
   }
 }
+
+/* ========== Project Card Links ========== */
+.project-card .project-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  transition: opacity 0.2s ease;
+}
+
+.project-card .project-link:hover {
+  opacity: 0.9;
+}
+
+.project-card .project-link:hover h2,
+.project-card .project-link:hover h3 {
+  text-decoration: underline;
+}
+
+/* ========== Tags Styling ========== */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 0.8em;
+}
+
+.tag {
+  padding: 0.3em 0.7em;
+  border-radius: 16px;
+  font-size: 0.85em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+html[data-theme="light"] .tag {
+  background: oklch(90% 0.08 240);
+  color: oklch(40% 0.15 240);
+}
+
+html[data-theme="dark"] .tag {
+  background: oklch(30% 0.05 240);
+  color: oklch(75% 0.1 240);
+}
+
+html:not([data-theme]) .tag {
+  background: oklch(90% 0.08 240);
+  color: oklch(40% 0.15 240);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .tag {
+    background: oklch(30% 0.05 240);
+    color: oklch(75% 0.1 240);
+  }
+}
+
+/* Dark mode year styling */
+html[data-theme="dark"] .project-year {
+  color: #aaa;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .project-year {
+    color: #aaa;
+  }
+}
