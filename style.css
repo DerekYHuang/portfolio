@@ -972,3 +972,310 @@ html[data-theme="dark"] .project-year {
     color: #aaa;
   }
 }
+
+
+
+/* ========== Meta Commits Scroll Bar ========== */
+/* Step 1.1: Time filter slider styling */
+.time-filter {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+html[data-theme="dark"] .time-filter {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .time-filter {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.time-filter label {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex: 1;
+  font-weight: 500;
+}
+
+.time-filter input[type="range"] {
+  flex: 1;
+  min-width: 200px;
+  cursor: pointer;
+}
+
+.time-filter time {
+  margin-left: auto;
+  font-family: monospace;
+  font-size: 0.95em;
+  white-space: nowrap;
+}
+
+/* ========== FIND YOUR EXISTING circle or .dots circle RULE AND UPDATE IT ========== */
+/* Replace your existing circle transition rules with this: */
+
+.dots circle {
+  transition: 
+    fill-opacity 200ms,
+    transform 200ms,
+    cx 200ms,
+    cy 200ms,
+    r 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+  cursor: pointer;
+  
+  /* Step 1.4: Entry transitions - animate new circles from r: 0 */
+  @starting-style {
+    r: 0;
+  }
+}
+
+.dots circle:hover {
+  transform: scale(1.2);
+  stroke-width: 2;
+}
+
+html[data-theme="dark"] .dots circle:hover {
+  stroke: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .dots circle:hover {
+    stroke: #fff;
+  }
+}
+
+
+/* ========== ADD THESE TO THE END OF YOUR style.css ========== */
+/* (Remove any duplicate rules you may have added previously) */
+
+/* ========== STEP 1: TIME FILTER SLIDER ========== */
+.time-filter {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+html[data-theme="dark"] .time-filter {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .time-filter {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.time-filter label {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex: 1;
+  font-weight: 500;
+}
+
+.time-filter input[type="range"] {
+  flex: 1;
+  min-width: 200px;
+  cursor: pointer;
+}
+
+.time-filter time {
+  margin-left: auto;
+  font-family: monospace;
+  font-size: 0.95em;
+  white-space: nowrap;
+}
+
+/* ========== STEP 1.4: CIRCLE TRANSITIONS WITH ENTRY ANIMATION ========== */
+/* NOTE: This may conflict with existing .dots circle rules - keep only one */
+.dots circle {
+  transition: 
+    fill-opacity 200ms,
+    transform 200ms,
+    cx 200ms,
+    cy 200ms,
+    r 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+  cursor: pointer;
+  
+  @starting-style {
+    r: 0;
+  }
+}
+
+.dots circle:hover {
+  transform: scale(1.2);
+  stroke-width: 2;
+}
+
+html[data-theme="dark"] .dots circle:hover {
+  stroke: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .dots circle:hover {
+    stroke: #fff;
+  }
+}
+
+/* ========== STEP 2: FILE UNIT VISUALIZATION ========== */
+#files {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 0.5em 1em;
+  margin: 2rem 0;
+}
+
+#files > div {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: start;
+  padding: 0.5em 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+#files > div:last-child {
+  border-bottom: none;
+}
+
+#files dt {
+  grid-column: 1;
+}
+
+#files dt code {
+  font-size: 0.95em;
+  font-weight: 600;
+}
+
+#files dt small {
+  display: block;
+  font-size: 0.8em;
+  opacity: 0.7;
+  margin-top: 0.25em;
+}
+
+#files dd {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  gap: 0.15em;
+  padding-top: 0.6em;
+  margin-left: 0;
+}
+
+.loc {
+  display: flex;
+  width: 0.5em;
+  aspect-ratio: 1;
+  background: var(--color, steelblue);
+  border-radius: 50%;
+}
+
+/* ========== STEP 3: SCROLLYTELLING LAYOUT ========== */
+#scrolly-1 {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+}
+
+#scrolly-1 > * {
+  flex: 1;
+}
+
+#scatter-story {
+  position: relative;
+}
+
+#scatter-plot {
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  height: 50vh;
+  overflow-y: auto;
+}
+
+.step {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 40vh;
+  line-height: 1.6;
+  font-size: 1.1em;
+}
+
+.step:last-child {
+  padding-bottom: 60vh;
+}
+
+.step a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.step a:hover {
+  text-decoration: underline;
+}
+
+html[data-theme="light"] .step,
+html:not([data-theme]) .step {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.02), transparent);
+  border-left: 3px solid var(--color-accent);
+}
+
+html[data-theme="dark"] .step {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.03), transparent);
+  border-left: 3px solid var(--color-accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) .step {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.03), transparent);
+  }
+}
+
+/* ========== STEP 4: SECOND SCROLLYTELLING (FILES) ========== */
+#scrolly-2 {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+#scrolly-2 > * {
+  flex: 1;
+}
+
+#files-story {
+  position: relative;
+}
+
+#files-plot {
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  height: 80vh;
+  overflow-y: auto;
+}
+
+#files-plot h2 {
+  margin-top: 0;
+}
