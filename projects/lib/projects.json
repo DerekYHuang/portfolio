@@ -36,10 +36,12 @@
   "tags": ["JavaScript", "D3.js", "Mapbox", "HTML", "CSS"]
   },
   {
-    "title": "Data Merging Automation Script",
-    "year": "2025",
-    "image": "images/data_merge.png",
-    "description": "Automated the process of merging land temperature datasets with truth data using Pandas and coordinate normalization."
+  "title": "Netflix Content-Based Recommender",
+  "year": "2025",
+  "description": "A content-based movie and TV show recommendation system built using TF-IDF vectorization and cosine similarity. The model analyzes cleaned Netflix descriptions to generate top-k similar title recommendations and includes evaluation visualizations.",
+  "image": "../images/netflix_recommender.png",
+  "url": "https://derekyhuang.github.io/Netflix_Recommender/",
+  "tags": ["Python", "Scikit-Learn", "Pandas", "NLP", "TF-IDF", "Machine Learning"]
   },
   {
     "title": "Climate Change Visualization Dashboard",
